@@ -1,0 +1,8 @@
+.data
+classes
+tmp
+temp
+*.class
+*.tmp
+
+*.jdb
