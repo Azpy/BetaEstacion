@@ -34,3 +34,15 @@ C:\dev\workspace\Estacionamiento\Estacionamiento\obj\Debug\Estacionamiento.cspro
 C:\dev\workspace\Estacionamiento\Estacionamiento\obj\Debug\Estacionamiento.csproj.CoreCompileInputs.cache
 C:\dev\workspace\Estacionamiento\Estacionamiento\obj\Debug\Estacionamiento.exe
 C:\dev\workspace\Estacionamiento\Estacionamiento\obj\Debug\Estacionamiento.pdb
+C:\#Jonathan\Estacionamiento_proyect\BetaEstacion\Estacionamiento\bin\Debug\Estacionamiento.exe.config
+C:\#Jonathan\Estacionamiento_proyect\BetaEstacion\Estacionamiento\bin\Debug\Estacionamiento.exe
+C:\#Jonathan\Estacionamiento_proyect\BetaEstacion\Estacionamiento\bin\Debug\Estacionamiento.pdb
+C:\#Jonathan\Estacionamiento_proyect\BetaEstacion\Estacionamiento\obj\Debug\Estacionamiento.csprojResolveAssemblyReference.cache
+C:\#Jonathan\Estacionamiento_proyect\BetaEstacion\Estacionamiento\obj\Debug\Estacionamiento.Properties.Resources.resources
+C:\#Jonathan\Estacionamiento_proyect\BetaEstacion\Estacionamiento\obj\Debug\Estacionamiento.csproj.GenerateResource.Cache
+C:\#Jonathan\Estacionamiento_proyect\BetaEstacion\Estacionamiento\obj\Debug\Estacionamiento.exe
+C:\#Jonathan\Estacionamiento_proyect\BetaEstacion\Estacionamiento\obj\Debug\Estacionamiento.pdb
+C:\#Jonathan\Estacionamiento_proyect\BetaEstacion\Estacionamiento\obj\Debug\Estacionamiento.FrmRegistro.resources
+C:\#Jonathan\Estacionamiento_proyect\BetaEstacion\Estacionamiento\obj\Debug\Estacionamiento.FrmControl.resources
+C:\#Jonathan\Estacionamiento_proyect\BetaEstacion\Estacionamiento\obj\Debug\Estacionamiento.FrmEstacionamiento.resources
+C:\#Jonathan\Estacionamiento_proyect\BetaEstacion\Estacionamiento\bin\Debug\ConexcionBD.dll
