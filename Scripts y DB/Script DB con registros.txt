@@ -1,0 +1,79 @@
+USE [DBEstacionamiento]
+GO
+/****** Object:  Table [dbo].[usuarios]    Script Date: 04/18/2018 19:56:46 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[usuarios](
+	[idusuario] [int] IDENTITY(1,1) NOT NULL,
+	[mat_usuario] [varchar](8) NOT NULL,
+	[nombre] [varchar](50) NOT NULL,
+	[cajon_asignado] [int] NULL,
+	[status_usuario] [tinyint] NULL,
+	[preferencia] [int] NULL,
+	[invitado] [tinyint] NULL,
+	[hora_ent] [varchar](4) NULL,
+	[hora_sal] [varchar](4) NULL
+) ON [PRIMARY]
+GO
+SET ANSI_PADDING OFF
+GO
+SET IDENTITY_INSERT [dbo].[usuarios] ON
+INSERT [dbo].[usuarios] ([idusuario], [mat_usuario], [nombre], [cajon_asignado], [status_usuario], [preferencia], [invitado], [hora_ent], [hora_sal]) VALUES (1, N'9876543', N'nuevo nombre', NULL, NULL, 0, 0, NULL, NULL)
+INSERT [dbo].[usuarios] ([idusuario], [mat_usuario], [nombre], [cajon_asignado], [status_usuario], [preferencia], [invitado], [hora_ent], [hora_sal]) VALUES (2, N'1515153', N'nombre usuario uno', NULL, NULL, 0, 0, NULL, NULL)
+INSERT [dbo].[usuarios] ([idusuario], [mat_usuario], [nombre], [cajon_asignado], [status_usuario], [preferencia], [invitado], [hora_ent], [hora_sal]) VALUES (3, N'1616161', N'nombre usuario dos', NULL, NULL, 0, 0, NULL, NULL)
+INSERT [dbo].[usuarios] ([idusuario], [mat_usuario], [nombre], [cajon_asignado], [status_usuario], [preferencia], [invitado], [hora_ent], [hora_sal]) VALUES (4, N'1717174', N'nombre usuario tres', NULL, NULL, 0, 0, NULL, NULL)
+INSERT [dbo].[usuarios] ([idusuario], [mat_usuario], [nombre], [cajon_asignado], [status_usuario], [preferencia], [invitado], [hora_ent], [hora_sal]) VALUES (5, N'1415121', N'jonathan', NULL, NULL, 0, 0, NULL, NULL)
+INSERT [dbo].[usuarios] ([idusuario], [mat_usuario], [nombre], [cajon_asignado], [status_usuario], [preferencia], [invitado], [hora_ent], [hora_sal]) VALUES (6, N'1234567', N'Alexis', NULL, NULL, 0, 0, NULL, NULL)
+INSERT [dbo].[usuarios] ([idusuario], [mat_usuario], [nombre], [cajon_asignado], [status_usuario], [preferencia], [invitado], [hora_ent], [hora_sal]) VALUES (7, N'1234567', N'guerrero', NULL, NULL, 0, 0, NULL, NULL)
+INSERT [dbo].[usuarios] ([idusuario], [mat_usuario], [nombre], [cajon_asignado], [status_usuario], [preferencia], [invitado], [hora_ent], [hora_sal]) VALUES (8, N'7654321', N'nuevo', NULL, NULL, 0, 0, NULL, NULL)
+SET IDENTITY_INSERT [dbo].[usuarios] OFF
+/****** Object:  Table [dbo].[cajones]    Script Date: 04/18/2018 19:56:46 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[cajones](
+	[idcajon] [int] IDENTITY(1,1) NOT NULL,
+	[status_cajon] [tinyint] NOT NULL,
+	[seccion] [varchar](3) NOT NULL,
+	[tipo_cajon] [varchar](10) NULL,
+	[idauto] [int] NOT NULL
+) ON [PRIMARY]
+GO
+SET ANSI_PADDING OFF
+GO
+SET IDENTITY_INSERT [dbo].[cajones] ON
+INSERT [dbo].[cajones] ([idcajon], [status_cajon], [seccion], [tipo_cajon], [idauto]) VALUES (1, 0, N'AA1', N'0', 0)
+SET IDENTITY_INSERT [dbo].[cajones] OFF
+/****** Object:  Table [dbo].[autos]    Script Date: 04/18/2018 19:56:46 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[autos](
+	[idautos] [int] IDENTITY(1,1) NOT NULL,
+	[modelo_auto] [varchar](15) NOT NULL,
+	[matricula_auto] [varchar](12) NOT NULL,
+	[idusuario] [int] NOT NULL
+) ON [PRIMARY]
+GO
+SET ANSI_PADDING OFF
+GO
+SET IDENTITY_INSERT [dbo].[autos] ON
+INSERT [dbo].[autos] ([idautos], [modelo_auto], [matricula_auto], [idusuario]) VALUES (1, N'focus', N'sss-22-22', 1)
+INSERT [dbo].[autos] ([idautos], [modelo_auto], [matricula_auto], [idusuario]) VALUES (2, N'sentra', N'aaa-12-41', 2)
+INSERT [dbo].[autos] ([idautos], [modelo_auto], [matricula_auto], [idusuario]) VALUES (3, N'altima', N'aas-58-32', 3)
+INSERT [dbo].[autos] ([idautos], [modelo_auto], [matricula_auto], [idusuario]) VALUES (4, N'versa', N'	sss-12-12', 5)
+INSERT [dbo].[autos] ([idautos], [modelo_auto], [matricula_auto], [idusuario]) VALUES (5, N'seat', N' aaa-11-11', 8)
+INSERT [dbo].[autos] ([idautos], [modelo_auto], [matricula_auto], [idusuario]) VALUES (6, N'modelo', N'	aaa-21-32', 8)
+INSERT [dbo].[autos] ([idautos], [modelo_auto], [matricula_auto], [idusuario]) VALUES (7, N'auto', N'qqq-aa-aa', 9)
+INSERT [dbo].[autos] ([idautos], [modelo_auto], [matricula_auto], [idusuario]) VALUES (8, N'srt', N'aaa-85-85', 8)
+SET IDENTITY_INSERT [dbo].[autos] OFF

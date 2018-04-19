@@ -19,6 +19,9 @@ namespace Estacionamiento
 
 
         BaseDeDatos bd = new BaseDeDatos();
+        int val_inv, cons_id;
+        string res_id, mat_busq,id_user,sel_ind, sel_inv;
+        Boolean val_invb;
 
         private void radioButton3_CheckedChanged(object sender, EventArgs e)
         {
@@ -65,24 +68,25 @@ namespace Estacionamiento
 
         private void btnRegistrar_Click(object sender, EventArgs e)
         {
-            string registrar = "insert into usuarios(mat_usuario,nombre,preferencia,invitado) values("+ txtMatricula.Text +",'"+ txtNombre.Text + "'," + 0 +","+ 0 + ")";
-            string auto = "insert into autos(modelo_auto,matricula_auto,idusuario) values('" + txtModelo.Text + "','" + txtPlaca.Text + "', " + 8 + ")";
+            val_inv = rdbInvitado.Checked ? 1 : 0;
+            string registrar = "insert into usuarios(mat_usuario,nombre,preferencia,invitado) values("+ txtMatricula.Text +",'"+ txtNombre.Text + "'," + cmbPreferencia.SelectedIndex +","+ val_inv + ")";
             
             if (bd.executecommand(registrar))
             {
+                string cons_id = "SELECT idusuario FROM usuarios WHERE idusuario = (SELECT MAX(idusuario) from usuarios)";
+                res_id = bd.selectstring(cons_id);
+                string auto = "insert into autos(modelo_auto,matricula_auto,idusuario) values('" + txtModelo.Text + "','" + txtPlaca.Text + "', " + res_id + ")";
+                if (bd.executecommand(auto)) { 
                 MessageBox.Show("Registro agregado correctamente");
+                }
+                else
+                {
+                    MessageBox.Show("Error al agregar");
+                }
             }
-            else {
-                MessageBox.Show("Error al agregar");
-            }
-            if (bd.executecommand(auto))
-            {
-                MessageBox.Show("Registro agregado correctamente");
-            }
-            else
-            {
-                MessageBox.Show("Error al agregar auto");
-            }
+            FrmRegistro reg = new FrmRegistro();
+            reg.Show();
+            this.Hide();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -102,6 +106,74 @@ namespace Estacionamiento
             FrmEstacionamiento est = new FrmEstacionamiento();
             est.Show();
             this.Hide();
+        }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            mat_busq = txtMatricula.Text;
+            txtMatricula.Text = bd.selectstring("select mat_usuario from usuarios where mat_usuario =" + mat_busq + "");
+            txtNombre.Text = bd.selectstring("select nombre from usuarios where mat_usuario =" + mat_busq + "");
+            sel_ind =  bd.selectstring("select preferencia from usuarios where mat_usuario =" + mat_busq + "");
+            cmbPreferencia.SelectedIndex = Convert.ToInt16(sel_ind);
+            id_user = bd.selectstring("select idusuario from usuarios where mat_usuario= " + mat_busq + "");
+            txtModelo.Text = bd.selectstring("select modelo_auto from autos where idusuario = " + id_user + "");
+            txtPlaca.Text = bd.selectstring("select matricula_auto from autos where idusuario = " + id_user + "");
+
+            sel_inv = bd.selectstring("select invitado from usuarios where mat_usuario =" + mat_busq + "");
+            if (sel_inv == "0")
+            {
+                val_invb = false;
+                rdbInvitado.Checked = val_invb;
+            }
+            else
+            {
+                val_invb = true;
+                rdbInvitado.Checked = val_invb;
+            }
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            mat_busq = txtMatricula.Text;
+            string cons_id = "select idusuario from usuarios where mat_usuario =" + mat_busq + "";
+            res_id = bd.selectstring(cons_id);
+            string eliminar = "delete from usuarios where mat_usuario =" + mat_busq + "";
+            if (bd.executecommand(eliminar))
+            {
+                string elim_auto = "delete from usuarios where idusuario =" + res_id + "";
+                if (bd.executecommand(elim_auto))
+                {
+                    MessageBox.Show("Registro borrado correctamente");
+                }
+                else
+                {
+                    MessageBox.Show("Error al borrar registro");
+                }
+            }
+            FrmRegistro reg = new FrmRegistro();
+            reg.Show();
+            this.Hide();
+        }
+
+        private void btnModificar_Click(object sender, EventArgs e)
+        {
+            val_inv = rdbInvitado.Checked ? 1 : 0;
+            mat_busq = txtMatricula.Text;
+            string modificar = "update usuarios set  nombre = '" + txtNombre.Text + "', preferencia = " + cmbPreferencia.SelectedIndex + ", invitado = " + val_inv + " where mat_usuario ="+ mat_busq +"";
+            if (bd.executecommand(modificar))
+            {
+                string cons_id = "select idusuario from usuarios where mat_usuario =" + mat_busq + "";
+                res_id = bd.selectstring(cons_id);
+                string modif_auto = "update autos set modelo_auto = '" + txtModelo.Text + "', matricula_auto = '" + txtPlaca.Text + "' where idusuario = " + res_id + "";
+                if (bd.executecommand(modif_auto))
+                {
+                    MessageBox.Show("Registro actualizado correctamente");
+                }
+                else
+                {
+                    MessageBox.Show("Error al modificar registro");
+                }
+            }
         }
     }
 }
